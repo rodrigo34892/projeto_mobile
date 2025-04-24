@@ -15,4 +15,14 @@ const NomePersonalizado = (props: NomeProps) => {
   )
 };
 
+const Batatinha = () => {
+  return (
+    <NomePersonalizado 
+       
+      sobrenome={'Bandasz'}
+      nome={'Igor'} />
+  );
+}
+
 export default NomePersonalizado;
+export {Batatinha}; 

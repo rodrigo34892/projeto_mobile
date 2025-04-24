@@ -9,7 +9,7 @@ const ExemploStylesText = () => {
             <Text style={styles_local.texto4}>Texto 4</Text>
             <Text style={styles_local.texto5}>Texto 5</Text>
             <Text style={[styles_local.negrito, styles_local.titulo]}>Texto 6</Text>
-            <Text style={[styles_local.texto5, styles_local.texto1, styles_local.titulo]}>Texto 7</Text>
+            <Text style={[styles_local.texto1, styles_local.texto5, ]}>Texto 7</Text>
         </>
     );
 }
@@ -27,9 +27,9 @@ const styles_local = StyleSheet.create({
     },
     texto3:{
         //espessura do texto
-        fontWeight: 'bold',
+        fontWeight: 'condensed',
         //tamanho da fonte
-        fontSize: 30,
+        fontSize: 50,
     },
     texto4:{
         //estilo da fonte
@@ -39,7 +39,7 @@ const styles_local = StyleSheet.create({
         //cor
         color: 'black',
         //criando sombra para o texto
-        textShadowOffset: {width: 5, height: 5},
+        textShadowOffset: {width: -20, height: 5},
         //cor da sombra do texto
         textShadowColor: 'yellow',
         //embaçar a sombra

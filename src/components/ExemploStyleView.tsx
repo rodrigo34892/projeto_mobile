@@ -42,13 +42,14 @@ const styles_local = StyleSheet.create({
     },
     container_flex: {
         //valor de preenchimento da área disponível
-        flex: 2,
+        flex: 1,
         //definição do eixo principal
         flexDirection: 'row',
         //cor de fundo
         backgroundColor: '#FFFACD',
         //margem
         margin: 10,
+        
     },
     fundo_azul: {
         //cor de fundo
@@ -70,7 +71,7 @@ const styles_local = StyleSheet.create({
     },
     flex_pequeno: {
         //valor de preenchimento da área disponível
-        flex: 1
+        flex: 3
     },
     flex_grande: {
         //valor de preenchimento da área disponível
