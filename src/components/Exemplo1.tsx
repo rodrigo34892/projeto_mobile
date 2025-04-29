@@ -4,7 +4,7 @@ import { styles } from '../styles/styles';
 
 const Exemplo1 = () => {
   //variável
-  let url = 'https://reactnative.dev/docs/assets/p_cat2.png';
+  const url = 'https://reactnative.dev/docs/assets/p_cat2.png';
 
 
 
