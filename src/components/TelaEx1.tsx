@@ -1,72 +1,91 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Image, Switch, Pressable, Alert, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, TextInput, Image, Switch, Pressable, Alert, StyleSheet } from 'react-native';
 
 const TelaEx1 = () => {
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [ativado, setAtivado] = useState(false);
+
+  const nome = '';
+  const email = '';
+  const telefone = '';
+  const ativado = false;
 
   return (
-
-    <View
-      style={styles.container}>
-      <Text
-        style={styles.titulo}>Cadastro de Cliente</Text>
+    <View style={styles.container}>
+      <Text style={styles.titulo}>Cadastro de Cliente</Text>
 
       <Image
         source={{ uri: 'https://cdn-icons-png.flaticon.com/512/2922/2922510.png' }}
         style={styles.imagem}
       />
-      <Text
-        style={styles.label}>Nome:</Text>
-      <TextInput placeholder="Digite o nome" value={nome} onChangeText={setNome} />
 
-      <Text
-        style={styles.label}>Email:</Text>
-      <TextInput placeholder="Digite o e-mail" value={email} onChangeText={setEmail} />
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Nome:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Digite o nome"
+          value={nome}
 
-      <Text
-        style={styles.label}>Telefone:</Text>
-      <TextInput placeholder="Digite o telefone" value={telefone} onChangeText={setTelefone} />
+        />
+      </View>
 
-      <Text
-        style={styles.label}>Possui Comorbidade?</Text>
-      <Switch
-        style={styles.switchContainer}
-        value={ativado}
-        onValueChange={(value) => { setAtivado(value) }} />
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Email:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Digite o e-mail"
+          value={email}
+          
+        />
+      </View>
 
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Telefone:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Digite o telefone"
+          value={telefone}
+         
+        />
+      </View>
 
-      <Pressable
-       style={({ pressed }) => [
-        styles.botaoCadastrar,
-        styles.Botao,
-        pressed && styles.botaoPressionado]}
+      <View style={styles.switchContainer}>
+        <Text style={styles.label}>Possui Comorbidade?</Text>
+        <Switch
+          value={ativado}
+       
+        />
+      </View>
 
-        onPress={() => { Alert.alert('Cadastrar') }}>
-        <Text>Cadastrar</Text>
-      </Pressable>
+      <View style={styles.botoesContainer}>
+        <Pressable
+          style={({ pressed }) => [
+            styles.botao,
+            styles.botaoCadastrar,
+            pressed && styles.botaoPressionado
+          ]}
+          onPress={() => { Alert.alert('Cadastrar') }}>
+          <Text style={styles.textoBotao}>Cadastrar</Text>
+        </Pressable>
 
-      <Pressable
-        style={styles.Botao}
-        onPress={() => { Alert.alert('Cancelar') }}>
-        <Text>Cancelar</Text>
-      </Pressable>
-
-
+        <Pressable
+          style={({ pressed }) => [
+            styles.botao,
+            styles.botaoCancelar,
+            pressed && styles.botaoPressionado
+          ]}
+          onPress={() => { Alert.alert('Cancelar') }}>
+          <Text style={styles.textoBotao}>Cancelar</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
 
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
     padding: 20,
     backgroundColor: '#fffacd',
-
   },
   titulo: {
     fontSize: 24,
@@ -80,18 +99,14 @@ const styles = StyleSheet.create({
     height: 120,
     alignSelf: 'center',
     marginBottom: 20,
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 10,
   },
-  formGroup: {
+  inputContainer: {
     marginBottom: 15,
   },
   label: {
     fontSize: 16,
-    fontWeight: 600,
+    marginBottom: 5,
     color: '#495057',
-    marginBottom: 8,
   },
   input: {
     height: 40,
@@ -107,27 +122,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 15,
   },
-  ButtonContainer: {
+
+  botoesContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     marginTop: 20,
-    gap: 15,
   },
-  Botao: {
+  botao: {
+    flex: 1,
     paddingVertical: 10,
-    paddingHorizontal: 20,
     borderRadius: 5,
-    minWidth: 120,
     alignItems: 'center',
+    marginHorizontal: 5,
   },
   botaoCadastrar: {
-    backgroundColor: '#3498db', 
+    backgroundColor: '#3498db',
   },
   botaoCancelar: {
-    backgroundColor: '#e74c3c', 
+    backgroundColor: '#e74c3c',
   },
-
+  textoBotao: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  botaoPressionado: {
+    opacity: 0.8,
+  },
 });
-
 
 export default TelaEx1;

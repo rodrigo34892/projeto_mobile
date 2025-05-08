@@ -8,6 +8,7 @@ import Exemplo05_Text from '../components/Exemplo05_Text';
 import Exemplo06_TextInput from '../components/Exemplo06_TextInput';
 import Exemplo07_Image from '../components/Exemplo07_Image';
 import TelaEx1 from '../components/TelaEx1';
+import TelaEx2 from '../components/TelaEx2';
 
 
 //Componente chamado TelaPrincipal que recebe 
@@ -19,7 +20,7 @@ const TelaPrincipal = (props: PrincipalProps) => {
   return (
     <View
       style={[styles.tela]}>
-        <TelaEx1/>
+        <TelaEx2/>
         {/* <Exemplo1/> */}
     </View>
   );
