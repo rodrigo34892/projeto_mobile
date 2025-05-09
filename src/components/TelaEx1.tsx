@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, Image, Switch, Pressable, Alert, StyleSheet } from 'react-native';
 
 const TelaEx1 = () => {
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [comorbidade, setComorbidade] = useState(false);
 
-  const nome = '';
-  const email = '';
-  const telefone = '';
-  const ativado = false;
+  const handleCadastrar = () => {
+    Alert.alert(
+      'Dados do Cliente',
+      `Nome: ${nome}\nEmail: ${email}\nTelefone: ${telefone}\nComorbidade: ${comorbidade ? 'Sim' : 'Não'}`,
+      [{ text: 'OK' }]
+    );
+  };
+
+  const handleCancelar = () => {
+    setNome('');
+    setEmail('');
+    setTelefone('');
+    setComorbidade(false);
+  };
 
   return (
     <View style={styles.container}>
@@ -23,7 +37,7 @@ const TelaEx1 = () => {
           style={styles.input}
           placeholder="Digite o nome"
           value={nome}
-
+          onChangeText={setNome}
         />
       </View>
 
@@ -33,7 +47,8 @@ const TelaEx1 = () => {
           style={styles.input}
           placeholder="Digite o e-mail"
           value={email}
-          
+          onChangeText={setEmail}
+          keyboardType="email-address"
         />
       </View>
 
@@ -43,15 +58,18 @@ const TelaEx1 = () => {
           style={styles.input}
           placeholder="Digite o telefone"
           value={telefone}
-         
+          onChangeText={setTelefone}
+          keyboardType="phone-pad"
         />
       </View>
 
       <View style={styles.switchContainer}>
         <Text style={styles.label}>Possui Comorbidade?</Text>
         <Switch
-          value={ativado}
-       
+          value={comorbidade}
+          onValueChange={setComorbidade}
+          trackColor={{ false: "#767577", true: "#81b0ff" }}
+          thumbColor={comorbidade ? "#f5dd4b" : "#f4f3f4"}
         />
       </View>
 
@@ -62,7 +80,7 @@ const TelaEx1 = () => {
             styles.botaoCadastrar,
             pressed && styles.botaoPressionado
           ]}
-          onPress={() => { Alert.alert('Cadastrar') }}>
+          onPress={handleCadastrar}>
           <Text style={styles.textoBotao}>Cadastrar</Text>
         </Pressable>
 
@@ -72,14 +90,14 @@ const TelaEx1 = () => {
             styles.botaoCancelar,
             pressed && styles.botaoPressionado
           ]}
-          onPress={() => { Alert.alert('Cancelar') }}>
+          onPress={handleCancelar}>
           <Text style={styles.textoBotao}>Cancelar</Text>
         </Pressable>
       </View>
     </View>
   );
-};
 
+};
 
 const styles = StyleSheet.create({
   container: {

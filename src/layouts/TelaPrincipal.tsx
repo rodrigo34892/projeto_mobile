@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 import { PrincipalProps } from '../navigation/HomeNavigator';
 import { styles } from '../styles/styles';
 import Exemplo01 from '../components/Exemplo01';
@@ -9,19 +9,31 @@ import Exemplo06_TextInput from '../components/Exemplo06_TextInput';
 import Exemplo07_Image from '../components/Exemplo07_Image';
 import TelaEx1 from '../components/TelaEx1';
 import TelaEx2 from '../components/TelaEx2';
+import Exemplo14_ParametroFunction from '../components/Exemplo14_ParametroFunction';
 
 
 //Componente chamado TelaPrincipal que recebe 
 //PrincipalProps 
 //como parametro e constrói uma View com o componente 
 //HelloWorld e Exemplo1 dentro
+
+
+
+
 const TelaPrincipal = (props: PrincipalProps) => {
-  
+
+  function funcaoClick() {
+    Alert.alert("Isso é uma mensagem")
+  }
+
+  function funcaoClick2() {
+    Alert.alert("Bom dia")
+  }
   return (
     <View
       style={[styles.tela]}>
-        <TelaEx2/>
-        {/* <Exemplo1/> */}
+      <Exemplo14_ParametroFunction
+        onClick={funcaoClick} />
     </View>
   );
 }
