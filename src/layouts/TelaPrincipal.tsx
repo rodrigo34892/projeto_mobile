@@ -10,33 +10,22 @@ import Exemplo07_Image from '../components/Exemplo07_Image';
 import TelaEx1 from '../components/TelaEx1';
 import TelaEx2 from '../components/TelaEx2';
 import Exemplo14_ParametroFunction from '../components/Exemplo14_ParametroFunction';
-
-
-//Componente chamado TelaPrincipal que recebe 
-//PrincipalProps 
-//como parametro e constrói uma View com o componente 
-//HelloWorld e Exemplo1 dentro
+import CampoDeTexto from '../components/CampoDeTexto';
 
 
 
+const TelaPrincipal = () => {
+  const handleTextoEnviado = (texto: string) => {
+    Alert.alert('Texto Digitado', texto);
+  };
 
-const TelaPrincipal = (props: PrincipalProps) => {
-
-  function funcaoClick() {
-    Alert.alert("Isso é uma mensagem")
-  }
-
-  function funcaoClick2() {
-    Alert.alert("Bom dia")
-  }
   return (
-    <View
-      style={[styles.tela]}>
-      <Exemplo14_ParametroFunction
-        onClick={funcaoClick} />
+    <View style={{ flex: 1, padding: 20 }}>
+      <CampoDeTexto onPressBotao={handleTextoEnviado} />
     </View>
   );
-}
+};
+
 
 //exportando o componente TelaPrincipal para ficar visível para outros arquivos
 export default TelaPrincipal;
