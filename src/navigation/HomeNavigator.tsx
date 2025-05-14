@@ -1,41 +1,47 @@
 import { NativeStackScreenProps, createNativeStackNavigator } from "@react-navigation/native-stack";
 import TelaPrincipal from "../layouts/TelaPrincipal";
+import Lista from "../components/Listas"; 
+import CampoDeTexto from "../components/CampoDeTexto";
+import TelaEx2 from "../components/TelaEx2";
 
-//Define quais as telas e os parâmetros de cada tela
+// Define quais as telas e os parâmetros de cada tela
 type RootStackParamList = {
   TelaPrincipal: undefined; 
-  
+  Listas: undefined;
+  CampoDeTexto: {onPressBotao: (texto:string) => void};
+  TelaEx2: {nome: string; nota1: number; nota2: number;}; 
 };
 
-//Cria a Stack (tipo de navegação onde as telas estão em uma "pilha")
-//com o RootStackParamList definindo as telas da stack
+// Cria a Stack
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-//Cria o navegador da pilha
+// Cria o navegador da pilha
 const HomeNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="TelaPrincipal" //nome da tela inicial
-      screenOptions={{ headerShown: false }} //headerShown define se o cabeçalho irá ser exibido
+      initialRouteName="TelaPrincipal"
+      screenOptions={{ headerShown: false }}
     >
-
-      {/* define uma te la dando um nome(igual ao RootStackParamList) e qual o componente será carregado */}
       <Stack.Screen name="TelaPrincipal" component={TelaPrincipal} />
-
+      <Stack.Screen name="Listas" component={Lista} />
+      <Stack.Screen name="CampoDeTexto" component={CampoDeTexto} /> 
+      <Stack.Screen name="TelaEx2" component={TelaEx2} />
     </Stack.Navigator>
   );
 }
 
-//cria as propriedades da TelaPrincipal, que nesse caso é undefined
-//essas propriedades são usadas lá em layouts/TelaPincipal.tsx
-type PrincipalProps = NativeStackScreenProps<RootStackParamList,
-  'TelaPrincipal'>;
+// Tipos para as props de navegação
+type PrincipalProps = NativeStackScreenProps<RootStackParamList, 'TelaPrincipal'>;
+type ListasProps = NativeStackScreenProps<RootStackParamList, 'Listas'>; 
+type CampoDeTextoProps = NativeStackScreenProps<RootStackParamList, 'CampoDeTexto'>;
+type TelaEx2Props = NativeStackScreenProps<RootStackParamList, 'TelaEx2'>;
 
-
-//exporta o navegador da pilha para ficar visível para outros arquivos    
 export default HomeNavigator;
 
-//exporta os tipos de dados para ficar visível para outros arquivos
+// Exporta todos os tipos
 export type {
-  PrincipalProps
+  PrincipalProps,
+  ListasProps,
+  CampoDeTextoProps,
+  TelaEx2Props
 };

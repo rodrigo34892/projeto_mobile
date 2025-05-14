@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { CampoDeTextoProps } from '../navigation/HomeNavigator';
 
-interface CamposTextoProps {
-    onPressBotao: (texto: string) => void;
-}
 
-const CampoDeTexto: React.FC<CamposTextoProps> = ({ onPressBotao }) => {
+const CampoDeTexto = (props: CampoDeTextoProps) => {
     const [texto, setTexto] = useState('');
 
     return (
@@ -22,7 +20,7 @@ const CampoDeTexto: React.FC<CamposTextoProps> = ({ onPressBotao }) => {
             <Button
                 title="Enviar"
                 onPress={() => {
-                    onPressBotao(texto);
+                    props.route.params.onPressBotao(texto);
                     setTexto('');
                 }}
 

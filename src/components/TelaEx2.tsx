@@ -1,70 +1,87 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { TelaEx2Props } from '../navigation/HomeNavigator';
 
-type AlunoProps = {
-    nome: string;
-    nota1: number;
-    nota2: number;
-};
 
-const Aluno = ({ nome, nota1, nota2 }: AlunoProps) => {
-    const media = (nota1 + nota2) / 2;
+
+const Aluno = (props: TelaEx2Props) => {
+    const media = (props.route.params.nota1 + props.route.params.nota2) / 2;
     const aprovado = media >= 7;
 
     return (
         <View style={styles.card}>
-            <Text style={styles.nome}>{nome}</Text>
-            <Text>Notas: {nota1} e {nota2}</Text>
+            <Text style={styles.nome}>{props.route.params.nome}</Text>
+            <Text style={styles.notas}>Notas: {props.route.params.nota1} e {props.route.params.nota2}</Text>
             <Text style={styles.media}>Média: {media.toFixed(1)}</Text>
-            <Text style={aprovado ? styles.aprovado : styles.reprovado}>
-                {aprovado ? 'Aprovado' : 'Reprovado'}
-            </Text>
+
+            {aprovado ? (
+                <View style={styles.mensagemContainer}>
+                    <Text style={styles.aprovadoTitulo}>Parabéns!</Text>
+                    <Text style={styles.aprovadoTexto}>Você foi aprovado!</Text>
+                    <Text style={styles.aprovadoTexto}>Continue assim!</Text>
+                </View>
+            ) : (
+                <View style={styles.mensagemContainer}>
+                    <Text style={styles.reprovadoTitulo}>Que pena!</Text>
+                    <Text style={styles.reprovadoTexto}>Você não atingiu a média!</Text>
+                    <Text style={styles.reprovadoTexto}>Não fique desanimado, estude mais na próxima!</Text>
+                </View>
+            )}
         </View>
     );
 };
-
-
-const TelaEx2 = () => {
-    return (
-        <View style={styles.container}>
-            <Aluno nome="Rodrigo" nota1={8} nota2={9} />
-            <Aluno nome="Rafael" nota1={5} nota2={6} />
-            <Aluno nome="Ana" nota1={9} nota2={8} />
-        </View>
-    );
-};
-
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 16,
-        backgroundColor: '#f5f5f5'
-    },
     card: {
         backgroundColor: 'white',
-        padding: 12,
-        marginBottom: 10,
+        padding: 16,
+        marginBottom: 12,
         borderRadius: 8,
-        elevation: 2
+        elevation: 3
     },
     nome: {
         fontWeight: 'bold',
-        fontSize: 16,
+        fontSize: 18,
+        marginBottom: 4,
+        color: '#333'
+    },
+    notas: {
+        fontSize: 14,
+        color: '#555',
         marginBottom: 4
     },
     media: {
         fontWeight: '600',
-        marginVertical: 4
+        fontSize: 15,
+        marginVertical: 6,
+        color: '#444'
     },
-    aprovado: {
-        color: 'green',
-        fontWeight: 'bold'
+    mensagemContainer: {
+        marginTop: 8,
+        paddingTop: 8,
+        borderTopWidth: 1,
+        borderTopColor: '#eee'
     },
-    reprovado: {
-        color: 'red',
-        fontWeight: 'bold'
+    aprovadoTitulo: {
+        color: '#2e7d32',
+        fontWeight: 'bold',
+        fontSize: 16,
+        marginBottom: 4
+    },
+    aprovadoTexto: {
+        color: '#2e7d32',
+        fontSize: 14
+    },
+    reprovadoTitulo: {
+        color: '#c62828',
+        fontWeight: 'bold',
+        fontSize: 16,
+        marginBottom: 4
+    },
+    reprovadoTexto: {
+        color: '#c62828',
+        fontSize: 14
     }
 });
 
-export default TelaEx2;
+export default Aluno;
