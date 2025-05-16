@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Alert, Pressable, StyleSheet, Text, View, ScrollView } from 'react-native';
-import { PrincipalProps } from '../navigation/HomeNavigator';
+import { TelaPrincipalProps } from '../navigation/HomeNavigator';
 import Exemplo01 from '../components/Exemplo01';
 import Exemplo1 from '../components/Exemplo1';
 import Exemplo05_Text from '../components/Exemplo05_Text';
@@ -12,19 +12,21 @@ import Exemplo14_ParametroFunction from '../components/Exemplo14_ParametroFuncti
 import CampoDeTexto from '../components/CampoDeTexto';
 import Aluno from '../components/TelaEx2'; // componente aluno que está como TelaEx2
 import Lista from '../components/Listas';
+import BancoCad from '../components/BancoCad';
 
-
-const TelaPrincipal = (props:PrincipalProps) => {
+const TelaPrincipal = (props: TelaPrincipalProps) => {
     return (
+
         <View style={{ flex: 1 }}>
-            <Pressable 
-            onPress={()=> {props.navigation.navigate("Listas")}}>
-                <Text>Exercico 3</Text>
+            <Pressable
+            onPress={()=> {props.navigation.navigate("BancoCad")}}>
+
+                <Text> Teste </Text>
+
             </Pressable>
         </View>
     );
 };
-
 
 
 export default TelaPrincipal;
