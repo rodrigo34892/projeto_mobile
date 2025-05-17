@@ -10,23 +10,37 @@ import TelaEx1 from '../components/TelaEx1';
 import TelaEx2 from '../components/TelaEx2';
 import Exemplo14_ParametroFunction from '../components/Exemplo14_ParametroFunction';
 import CampoDeTexto from '../components/CampoDeTexto';
-import Aluno from '../components/TelaEx2'; // componente aluno que está como TelaEx2
+import Aluno from '../components/TelaEx2'; 
 import Lista from '../components/Listas';
 import BancoCad from '../components/BancoCad';
+import TelaAtendimentoUPA from '../components/TeleAtendimentoUPA';
+
 
 const TelaPrincipal = (props: TelaPrincipalProps) => {
     return (
-
         <View style={{ flex: 1 }}>
             <Pressable
-            onPress={()=> {props.navigation.navigate("BancoCad")}}>
-
-                <Text> Teste </Text>
-
+                style={styles.botaoNavegacao}
+                onPress={() => props.navigation.navigate("TeleAtendimentoUPA")} 
+            >
+                <Text style={styles.textoBotao}>Abrir Sistema de Atendimento UPA</Text>
             </Pressable>
         </View>
     );
 };
 
+const styles = StyleSheet.create({
+    botaoNavegacao: {
+        backgroundColor: '#28a745',
+        padding: 15,
+        margin: 20,
+        borderRadius: 5,
+        alignItems: 'center',
+    },
+    textoBotao: {
+        color: 'white',
+        fontWeight: 'bold',
+    },
+});
 
 export default TelaPrincipal;
