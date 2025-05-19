@@ -3,16 +3,16 @@ import TelaPrincipal from "../layouts/TelaPrincipal";
 import Lista from "../components/Listas";
 import CampoDeTexto from "../components/CampoDeTexto";
 import TelaEx2 from "../components/TelaEx2";
-import BancoCad from "../components/BancoCad";
-import TelaAtendimentoUPA from "../components/TeleAtendimentoUPA"; 
+import GravarCliente from "../components/GravarCliente"; 
+import TelaAtendimentoUPA from "../components/TeleAtendimentoUPA";
 
 type RootStackParamList = {
   TelaPrincipal: undefined;
   Listas: undefined;
   CampoDeTexto: { onPressBotao: (texto: string) => void };
   TelaEx2: { nome: string; nota1: number; nota2: number };
-  BancoCad: undefined;
-  TeleAtendimentoUPA: undefined; 
+  GravarCliente: undefined; 
+  TeleAtendimentoUPA: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -27,7 +27,7 @@ const HomeNavigator = () => {
       <Stack.Screen name="Listas" component={Lista} />
       <Stack.Screen name="CampoDeTexto" component={CampoDeTexto} />
       <Stack.Screen name="TelaEx2" component={TelaEx2} />
-      <Stack.Screen name="BancoCad" component={BancoCad} />
+      <Stack.Screen name="GravarCliente" component={GravarCliente} /> 
       <Stack.Screen 
         name="TeleAtendimentoUPA" 
         component={TelaAtendimentoUPA}
@@ -40,12 +40,12 @@ const HomeNavigator = () => {
   );
 }
 
-
+// Atualize os tipos de props
 type TelaPrincipalProps = NativeStackScreenProps<RootStackParamList, 'TelaPrincipal'>;
 type ListasProps = NativeStackScreenProps<RootStackParamList, 'Listas'>;
 type CampoDeTextoProps = NativeStackScreenProps<RootStackParamList, 'CampoDeTexto'>;
 type TelaEx2Props = NativeStackScreenProps<RootStackParamList, 'TelaEx2'>;
-type BancoCadProps = NativeStackScreenProps<RootStackParamList, 'BancoCad'>;
+type GravarClienteProps = NativeStackScreenProps<RootStackParamList, 'GravarCliente'>; 
 type TeleAtendimentoUPAProps = NativeStackScreenProps<RootStackParamList, 'TeleAtendimentoUPA'>;
 
 export default HomeNavigator;
@@ -55,6 +55,6 @@ export type {
   ListasProps,
   CampoDeTextoProps,
   TelaEx2Props,
-  BancoCadProps,
+  GravarClienteProps, 
   TeleAtendimentoUPAProps
 };

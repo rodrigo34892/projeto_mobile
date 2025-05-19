@@ -14,16 +14,16 @@ import Aluno from '../components/TelaEx2';
 import Lista from '../components/Listas';
 import BancoCad from '../components/BancoCad';
 import TelaAtendimentoUPA from '../components/TeleAtendimentoUPA';
-
+import GravarCliente from '../components/GravarCliente';
 
 const TelaPrincipal = (props: TelaPrincipalProps) => {
     return (
         <View style={{ flex: 1 }}>
             <Pressable
                 style={styles.botaoNavegacao}
-                onPress={() => props.navigation.navigate("TeleAtendimentoUPA")} 
+                onPress={() => props.navigation.navigate("GravarCliente")} 
             >
-                <Text style={styles.textoBotao}>Abrir Sistema de Atendimento UPA</Text>
+                <Text style={styles.textoBotao}>Gravar Cliente</Text>
             </Pressable>
         </View>
     );
